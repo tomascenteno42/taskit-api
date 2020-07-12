@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+        "target": "ES5",
+        "lib": ["esnext"],
+        "strict": true,
+        "esModuleInterop": true,
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "baseUrl": ".",
+        "paths": {
+            "@start/*": ["./src/start/*"],
+            "@utils/*": ["./src/utils/*"],
+            "@graphql/*": ["./src/graphql/*"]
+        }
+    },
+    "include": [
+        "src"
+    ]
+}

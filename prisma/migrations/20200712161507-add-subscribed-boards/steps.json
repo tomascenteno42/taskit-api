@@ -1,0 +1,108 @@
+{
+  "version": "0.3.14-fixed",
+  "steps": [
+    {
+      "tag": "CreateField",
+      "model": "User",
+      "field": "subscribed_boards",
+      "type": "Board",
+      "arity": "List"
+    },
+    {
+      "tag": "CreateDirective",
+      "location": {
+        "path": {
+          "tag": "Field",
+          "model": "User",
+          "field": "subscribed_boards"
+        },
+        "directive": "relation"
+      }
+    },
+    {
+      "tag": "CreateArgument",
+      "location": {
+        "tag": "Directive",
+        "path": {
+          "tag": "Field",
+          "model": "User",
+          "field": "subscribed_boards"
+        },
+        "directive": "relation"
+      },
+      "argument": "name",
+      "value": "\"BoardToUser\""
+    },
+    {
+      "tag": "CreateDirective",
+      "location": {
+        "path": {
+          "tag": "Field",
+          "model": "User",
+          "field": "boards"
+        },
+        "directive": "relation"
+      }
+    },
+    {
+      "tag": "CreateArgument",
+      "location": {
+        "tag": "Directive",
+        "path": {
+          "tag": "Field",
+          "model": "User",
+          "field": "boards"
+        },
+        "directive": "relation"
+      },
+      "argument": "name",
+      "value": "\"BoardToAuthor\""
+    },
+    {
+      "tag": "CreateField",
+      "model": "Board",
+      "field": "users",
+      "type": "User",
+      "arity": "List"
+    },
+    {
+      "tag": "CreateDirective",
+      "location": {
+        "path": {
+          "tag": "Field",
+          "model": "Board",
+          "field": "users"
+        },
+        "directive": "relation"
+      }
+    },
+    {
+      "tag": "CreateArgument",
+      "location": {
+        "tag": "Directive",
+        "path": {
+          "tag": "Field",
+          "model": "Board",
+          "field": "users"
+        },
+        "directive": "relation"
+      },
+      "argument": "name",
+      "value": "\"BoardToUser\""
+    },
+    {
+      "tag": "CreateArgument",
+      "location": {
+        "tag": "Directive",
+        "path": {
+          "tag": "Field",
+          "model": "Board",
+          "field": "author"
+        },
+        "directive": "relation"
+      },
+      "argument": "name",
+      "value": "\"BoardToAuthor\""
+    }
+  ]
+}

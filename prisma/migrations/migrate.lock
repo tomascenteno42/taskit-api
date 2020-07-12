@@ -1,0 +1,7 @@
+# Prisma Migrate lockfile v1
+
+20200712154751-create-user
+20200712155153-create-board
+20200712155655-create-task
+20200712161507-add-subscribed-boards
+20200712161934-create-invitation

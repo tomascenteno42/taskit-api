@@ -1,0 +1,47 @@
+datasource db {
+  provider = "postgresql"
+  url      = "***"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id        Int       @id @default(autoincrement())
+  name      String
+  email     String    @unique
+  password  String
+  boards    Board[]
+  createdAt DateTime
+  updatedAt DateTime?
+  tasks     Task[]
+}
+
+model Board {
+  id        Int       @id @default(autoincrement())
+  name      String
+  authorId  Int
+  author    User      @relation(fields: [authorId], references: [id])
+  createdAt DateTime
+  updatedAt DateTime?
+  tasks     Task[]
+}
+
+enum TaskStatus {
+  COMPLETED
+  IN_PROGRESS
+  PENDING
+}
+
+model Task {
+  id        Int        @id @default(autoincrement())
+  content   String
+  status    TaskStatus
+  authorId  Int
+  author    User       @relation(fields: [authorId], references: [id])
+  board_id  Int
+  board     Board      @relation(fields: [board_id], references: [id])
+  createdAt DateTime
+  updatedAt DateTime?
+}
