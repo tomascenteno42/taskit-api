@@ -37,7 +37,7 @@ jobs:
       - run: npm test
   
   build-job:
-     working_directory: ~/repo
+      working_directory: ~/repo
       docker:
         - image: circleci/node
       steps:
