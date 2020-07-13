@@ -2,12 +2,12 @@ import { FastifyRequest, FastifyReply } from 'fastify';
 
 import { ServerResponse, IncomingMessage } from 'http';
 
-import { User } from '@prisma/client';
+import { User, PrismaClient } from '@prisma/client';
 
 import { prisma } from "@utils/prisma";
 
-export const context = (request: FastifyRequest<IncomingMessage>, reply: FastifyReply<ServerResponse>) => ({
-    prisma,
+export const context = (request: FastifyRequest<IncomingMessage>, reply: FastifyReply<ServerResponse>, oPrisma?: PrismaClient) => ({
+    prisma: oPrisma || prisma,
     request,
     reply
 });

@@ -1,0 +1,37 @@
+version: 2
+jobs:
+  test-job:
+    working_directory: ~/repo
+    docker:
+      - image: whatishedoing/node-postgresql
+        environment:
+          DATABASE_URL: postgres://root:toor@localhost:5432/taskit # This is the URL that will be used by prisma
+    steps:
+      # Postgres setup
+      - run: /etc/init.d/postgresql start
+      - run: sudo -u postgres sh -c 'createuser root & createdb taskit'
+      - run: sudo -u postgres psql -c "ALTER USER root PASSWORD 'toor';"
+      
+      # Checkout the code
+      - checkout
+
+      # Resote cache
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            - v1-dependencies-
+    
+      # Install dependencies
+      - run: npm install
+
+      # save cache
+      - save_cache:
+          key: v1-dependencies-{{ checksum "package.json" }}
+          paths:
+            - node_modules
+
+      # Run migrations on test database
+      - run: npx prisma migrate up --experimental
+
+      # run tests
+      - run: npm test

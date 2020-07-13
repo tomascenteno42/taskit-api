@@ -3,12 +3,9 @@ import GQL from "fastify-gql";
 
 import dotenv from "dotenv";
 
-import { buildSchema } from "type-graphql";
-
-import resolvers from "@graphql/resolvers";
+import { schema } from "@graphql/schema";
 
 import { context } from "@utils/context";
-import { authChecker } from "@utils/auth";
 
 export const bootstrap = async () => {
     dotenv.config();
@@ -16,11 +13,7 @@ export const bootstrap = async () => {
     const app = Fastify();
 
     app.register(GQL, {
-        schema: await buildSchema({
-            resolvers,
-            validate: false,
-            authChecker
-        }),
+        schema,
         context,
         jit: 1
     });
