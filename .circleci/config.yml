@@ -14,6 +14,7 @@ jobs:
       - run: sudo -u postgres psql -c "CREATE DATABASE taskit;"
       - run: sudo -u postgres psql -c "ALTER USER root CREATEDB"
       - run: sudo -u postgres psql -c "ALTER USER root PASSWORD 'toor';"
+      - run: sudo -u postgres psql -c "GRANT ALL PRIVILEGES ON DATABASE taskit TO root;"
       - run: sudo -u postgres psql -c "GRANT CONNECT ON DATABASE taskit TO root;" 
       - run: sudo -u postgres psql -c "CREATE SCHEMA IF NOT EXISTS public AUTHORIZATION root;"
       - run: sudo -u postgres psql -c "GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO root;" 
