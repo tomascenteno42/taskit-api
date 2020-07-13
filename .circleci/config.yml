@@ -6,6 +6,7 @@ jobs:
       - image: teovillanueva/node-postgres:0.0.3
         environment:
           DATABASE_URL: postgres://root:toor@localhost:5432/taskit # This is the URL that will be used by prisma
+          JWT_SECRET: testest
     steps:
       # Postgres setup
       - run: chmod -R 777 ~
