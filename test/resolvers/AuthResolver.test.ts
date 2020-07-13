@@ -61,8 +61,6 @@ describe("AuthResolver tests", () => {
             variableValues: { input }
         });
 
-        console.log(response);
-
         const { access_token, user } = response.data.register;
 
         expect(access_token).toBeTruthy()
