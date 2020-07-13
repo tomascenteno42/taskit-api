@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  test-job:
+  test:
     working_directory: ~/repo
     docker:
       - image: whatishedoing/node-postgresql
@@ -36,7 +36,7 @@ jobs:
       # run tests
       - run: npm test
   
-  build-job:
+  build:
       working_directory: ~/repo
       docker:
         - image: circleci/node
