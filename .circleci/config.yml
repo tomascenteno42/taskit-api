@@ -10,9 +10,12 @@ jobs:
       # Postgres setup
       - run: chmod -R 777 ~
       - run : /etc/init.d/postgresql start
-      - run: sudo -u postgres sh -c 'createuser root & createdb taskit'
+      - run: sudo -u postgres sh -c 'createuser root'
+      - run: sudo -u postgres psql -c "CREATE DATBASE taskit;"
+      - run: sudo -u postgres psql -c "ALTER USER root CREATEDB"
       - run: sudo -u postgres psql -c "ALTER USER root PASSWORD 'toor';"
       - run: sudo -u postgres psql -c "GRANT CONNECT ON DATABASE taskit TO root;" 
+      - run: sudo -u postgres psql -c "CREATE SCHEMA IF NOT EXISTS public AUTHORIZATION root;"
       - run: sudo -u postgres psql -c "GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO root;" 
       
       # Checkout the code
