@@ -3,7 +3,7 @@ jobs:
   test:
     working_directory: ~/repo
     docker:
-      - image: teovillanueva/node-postgres:0.0.2
+      - image: teovillanueva/node-postgres:0.0.3
         environment:
           DATABASE_URL: postgres://root:toor@localhost:5432/taskit # This is the URL that will be used by prisma
     steps:
