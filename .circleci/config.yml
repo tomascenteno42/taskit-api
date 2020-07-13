@@ -9,18 +9,18 @@ jobs:
           JWT_SECRET: testest
     steps:
       - run:
-        name: Setup PostgreSQL
-        command: |
-          chmod -R 777 ~
-          /etc/init.d/postgresql start
-          sudo -u postgres sh -c 'createuser root'
-          sudo -u postgres psql -c "CREATE DATABASE taskit;"
-          sudo -u postgres psql -c "ALTER USER root CREATEDB"
-          sudo -u postgres psql -c "ALTER USER root PASSWORD 'toor';"
-          sudo -u postgres psql -c "GRANT ALL PRIVILEGES ON DATABASE taskit TO root;"
-          sudo -u postgres psql -c "GRANT CONNECT ON DATABASE taskit TO root;"
-          sudo -u postgres psql -c "CREATE SCHEMA IF NOT EXISTS public AUTHORIZATION root;"
-          sudo -u postgres psql -c "GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO root;"
+          name: Setup PostgreSQL
+          command: |
+            chmod -R 777 ~
+            /etc/init.d/postgresql start
+            sudo -u postgres sh -c 'createuser root'
+            sudo -u postgres psql -c "CREATE DATABASE taskit;"
+            sudo -u postgres psql -c "ALTER USER root CREATEDB"
+            sudo -u postgres psql -c "ALTER USER root PASSWORD 'toor';"
+            sudo -u postgres psql -c "GRANT ALL PRIVILEGES ON DATABASE taskit TO root;"
+            sudo -u postgres psql -c "GRANT CONNECT ON DATABASE taskit TO root;"
+            sudo -u postgres psql -c "CREATE SCHEMA IF NOT EXISTS public AUTHORIZATION root;"
+            sudo -u postgres psql -c "GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO root;"
 
       # Checkout the code
       - checkout
