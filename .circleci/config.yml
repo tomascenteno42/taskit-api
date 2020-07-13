@@ -11,6 +11,7 @@ jobs:
       - run : /etc/init.d/postgresql start
       - run: sudo -u postgres sh -c 'createuser root & createdb taskit'
       - run: sudo -u postgres psql -c "ALTER USER root PASSWORD 'toor';"
+      - run: sudo -u postgres psql -c "GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO root;" 
       
       # Checkout the code
       - checkout
