@@ -42,3 +42,9 @@ jobs:
         - image: circleci/node
       steps:
         - run: echo "hello!"
+
+workflows:
+  version: 2
+  test:
+    jobs:
+      - test
