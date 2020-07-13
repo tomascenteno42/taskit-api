@@ -8,7 +8,6 @@ jobs:
           DATABASE_URL: postgres://root:toor@localhost:5432/taskit # This is the URL that will be used by prisma
     steps:
       # Postgres setup
-      - run: /etc/init.d/postgresql start
       - run: sudo -u postgres sh -c 'createuser root & createdb taskit'
       - run: sudo -u postgres psql -c "ALTER USER root PASSWORD 'toor';"
       
