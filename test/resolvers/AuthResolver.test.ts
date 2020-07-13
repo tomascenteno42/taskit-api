@@ -61,6 +61,8 @@ describe("AuthResolver tests", () => {
             variableValues: { input }
         });
 
+        console.log(response);
+
         const { access_token, user } = response.data.register;
 
         expect(access_token).toBeTruthy()
@@ -76,6 +78,7 @@ describe("AuthResolver tests", () => {
     it(`Created a database record for user ${input.email}`, async () => {
         const user = await prisma.user.findOne({ where: { email: input.email } });
 
+        expect(user).not.toBe(null)
         expect(user).toBeTruthy()
     });
 
