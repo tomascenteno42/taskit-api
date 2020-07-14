@@ -8,7 +8,10 @@
     "build:production": "npx webpack --mode=production",
     "start:dev": "npm run build:development -- --watch",
     "start:production": "npm start build/bundle.js",
-    "test": "npx jest --runInBand"
+    "test": "npx jest --runInBand",
+    "ci:dist": "sh ./script/dist.sh",
+    "ci:deploy": "npm install && npm run build:production && npx prisma migrate up --experimental && npm run ci:dist && npm run eb:deploy",
+    "eb:deploy": "eb deploy --staged JoblifyApi-env --profile eb-cli"
   },
   "repository": {
     "type": "git",
