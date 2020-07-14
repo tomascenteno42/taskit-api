@@ -43,6 +43,9 @@ jobs:
       # Run migrations on test database
       - run: npx prisma migrate up --experimental
 
+      # Run migrations on test database
+      - run: npx prisma generate
+
       # run tests
       - run: npm test
 

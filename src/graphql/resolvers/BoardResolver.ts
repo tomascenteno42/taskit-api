@@ -25,7 +25,11 @@ export class BoardResolver {
                 },
                 createdAt: new Date()
             },
-            include: { author: true, users: true, tasks: true }
+            include: {
+                author: true,
+                users: true,
+                tasks: true
+            }
         });
 
         return board;        
@@ -104,6 +108,11 @@ export class BoardResolver {
                         id: ctx.user.id
                     }
                 }   
+            },
+            include: {
+                author: true,
+                tasks: true,
+                users: true
             }
         });
 
