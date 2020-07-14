@@ -65,7 +65,7 @@ jobs:
           command: |
             apt-get update
             apt-get install zip
-            
+      
       - run:
           name: Create AWS credentials
           command: |
@@ -75,7 +75,9 @@ jobs:
             echo "[profile eb-cli]" > ~/.aws/config
             echo "aws_access_key_id=$AWS_ACCESS_KEY_ID" >> ~/.aws/config
             echo "aws_secret_access_key=$AWS_SECRET_ACCESS_KEY" >> ~/.aws/config
-
+            echo "export PATH=$PRODUCTION_DATABASE_URL" >> $BASH_ENV
+            source $BASH_ENV
+            
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "package.json" }}
