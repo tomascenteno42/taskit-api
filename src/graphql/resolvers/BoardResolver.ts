@@ -1,4 +1,4 @@
-import { Resolver, Mutation, Authorized, Arg, Ctx } from "type-graphql";
+import { Resolver, Mutation, Authorized, Arg, Ctx, Query } from "type-graphql";
 
 import { ForbiddenError } from "apollo-server-core";
 
@@ -81,7 +81,7 @@ export class BoardResolver {
     }
 
     @Authorized()
-    @Mutation(returns => [Board])
+    @Query(returns => [Board])
     async boards(@Ctx() ctx: Context) {
         const boards = await ctx.prisma.board.findMany({
             where: {
@@ -99,7 +99,7 @@ export class BoardResolver {
     }
 
     @Authorized()
-    @Mutation(returns => [Board])
+    @Query(returns => [Board])
     async subscribedBoards(@Ctx() ctx: Context) {
         const subscribedBoards = await ctx.prisma.board.findMany({
             where: {
