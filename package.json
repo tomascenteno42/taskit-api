@@ -11,7 +11,7 @@
     "test": "npx jest --runInBand",
     "ci:dist": "sh ./script/dist.sh",
     "ci:deploy": "npm install && npm run build:production && npx prisma migrate up --experimental && npm run ci:dist && npm run eb:deploy",
-    "eb:deploy": "eb deploy --staged JoblifyApi-env --profile eb-cli"
+    "eb:deploy": "eb deploy --staged TaskitApi-env --profile eb-cli"
   },
   "repository": {
     "type": "git",
