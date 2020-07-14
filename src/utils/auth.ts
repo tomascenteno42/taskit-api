@@ -9,7 +9,7 @@ import { AuthPayload } from "@graphql/types/AuthPayload";
 import { SignUserToken, DecodeUserToken } from "@utils/token";
 import { Context } from "@utils/context";
 
-export const SignAuthPayload = (user: User): AuthPayload => {
+export const SignAuthPayload = (user: User) => {
     return {
         access_token: SignUserToken(user.id),
         user

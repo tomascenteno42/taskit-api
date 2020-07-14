@@ -6,8 +6,8 @@ import { Invitation } from "./Invitation";
 
 @ObjectType()
 export class Board {
-    @Field(type => ID)
-    id!: string;
+    @Field()
+    id!: number;
     
     @Field()
     name!: string;
