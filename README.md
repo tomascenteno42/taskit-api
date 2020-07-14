@@ -1,5 +1,5 @@
-# TaskIT GraphQL API
-Welcome to the TaskIT GraphQL API github repository.
+# TaskIT GraphQL API [![Tomascenteno42](https://circleci.com/gh/tomascenteno42/taskit-api.svg?style=svg)](https://github.com/tomascenteno42/taskit-api)
+Welcome to the TaskIT GraphQL API github repository. 
 
 ## Building
 
