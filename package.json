@@ -31,10 +31,10 @@
     "fastify-gql": "^4.3.0",
     "jsonwebtoken": "^8.5.1",
     "reflect-metadata": "^0.1.13",
-    "type-graphql": "^1.0.0-rc.3"
+    "type-graphql": "^1.0.0-rc.3",
+    "@prisma/cli": "^2.2.0"
   },
   "devDependencies": {
-    "@prisma/cli": "^2.2.0",
     "@types/bcrypt": "^3.0.0",
     "@types/faker": "^4.1.12",
     "@types/jest": "^26.0.4",
