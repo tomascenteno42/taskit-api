@@ -116,7 +116,10 @@ export class TaskResolver {
 
         const task = await ctx.prisma.task.update({
             where: { id: taskToUpdate.id },
-            data: input,
+            data: {
+                ...input,
+                updatedAt: new Date()
+            },
             include: {
                 author: true,
                 board: true
@@ -153,7 +156,10 @@ export class TaskResolver {
 
         const task = await ctx.prisma.task.update({
             where: { id: taskToUpdate.id },
-            data: { status },
+            data: {
+                status,
+                updatedAt: new Date()
+            },
         });
 
         return task;
