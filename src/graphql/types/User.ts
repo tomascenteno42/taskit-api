@@ -18,7 +18,7 @@ export class User {
     boards!: Board[];
     
     @Field(type => [Board])
-    subscribed_boards!: Board[];
+    subscribedBoards!: Board[];
 
     @Field(type => [Invitation])
     invitations!: Invitation[];

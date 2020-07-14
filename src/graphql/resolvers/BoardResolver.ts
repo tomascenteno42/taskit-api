@@ -75,4 +75,38 @@ export class BoardResolver {
 
         return true
     }
+
+    @Authorized()
+    @Mutation(returns => [Board])
+    async boards(@Ctx() ctx: Context) {
+        const boards = await ctx.prisma.board.findMany({
+            where: {
+                authorId: ctx.user.id
+            },
+            include: {
+                author: true,
+                invitations: true,
+                tasks: true,
+                users: true
+            }
+        });
+
+        return boards;
+    }
+
+    @Authorized()
+    @Mutation(returns => [Board])
+    async subscribedBoards(@Ctx() ctx: Context) {
+        const subscribedBoards = await ctx.prisma.board.findMany({
+            where: {
+                users: {
+                    every: {
+                        id: ctx.user.id
+                    }
+                }   
+            }
+        });
+
+        return subscribedBoards;
+    }
 }

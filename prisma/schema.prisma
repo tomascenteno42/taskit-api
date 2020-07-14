@@ -12,7 +12,7 @@ model User {
   name              String
   email             String       @unique
   password          String
-  subscribed_boards Board[]      @relation(name: "BoardToUser")
+  subscribedBoards  Board[]      @relation(name: "BoardToUser")
   boards            Board[]      @relation(name: "BoardToAuthor")
   tasks             Task[]
   invitations       Invitation[]

@@ -31,7 +31,7 @@ export const authChecker: AuthChecker<Context> = async ({ context }) => {
                 include: {
                     boards: true,
                     invitations: true,
-                    subscribed_boards: true,
+                    subscribedBoards: true,
                     tasks: true
                 }
             });
