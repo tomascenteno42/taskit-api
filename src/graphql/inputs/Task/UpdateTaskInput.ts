@@ -1,6 +1,6 @@
 import { InputType, Field } from "type-graphql";
 
-import { TaskStatus } from "@prisma/client";
+import { TaskStatus } from "@graphql/types";
 
 @InputType()
 export class UpdateTaskInput {

@@ -36,6 +36,7 @@ const configFactory = (env, args) => {
     }
 
     if (args.mode === "production") {
+        console.log("productio!")
         config.optimization = {
             minimize: true,
             minimizer: [new TerserPlugin({

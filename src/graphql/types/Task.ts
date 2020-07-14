@@ -1,9 +1,13 @@
 import { ObjectType, registerEnumType, Field, ID } from "type-graphql";
 
-import { TaskStatus } from "@prisma/client";
-
 import { User } from "./User";
 import { Board } from "./Board";
+
+export enum TaskStatus {
+    COMPLETED = "COMPLETED",
+    IN_PROGRESS = "IN_PROGRESS",
+    PENDING = "PENDING",
+}
 
 registerEnumType(TaskStatus, {
     name: "TaskStatus"

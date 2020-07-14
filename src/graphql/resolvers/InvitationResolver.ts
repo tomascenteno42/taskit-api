@@ -2,8 +2,7 @@ import { Resolver, Mutation, Arg, Ctx, Query, Authorized } from "type-graphql";
 
 import { ForbiddenError, toApolloError, ValidationError } from "apollo-server-core";
 
-import { Invitation } from "@graphql/types/Invitation";
-import { Board } from "@graphql/types/Board";
+import { Invitation, Board } from "@graphql/types";
 
 import { Context } from "@utils/context";
 

@@ -2,13 +2,12 @@ import { Resolver, Authorized, Mutation, Arg, Ctx, Query } from "type-graphql";
 
 import { ForbiddenError } from "apollo-server-core";
 
-import { Task } from "@graphql/types/Task";
+import { Task, TaskStatus } from "@graphql/types";
 
 import { CreateTaskInput } from "@graphql/inputs/Task/CreateTaskInput";
 import { UpdateTaskInput } from "@graphql/inputs/Task/UpdateTaskInput";
 
 import { Context } from "@utils/context";
-import { TaskStatus } from "@prisma/client";
 
 @Resolver()
 export class TaskResolver {
