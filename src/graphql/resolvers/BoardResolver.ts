@@ -38,15 +38,14 @@ export class BoardResolver {
     @Authorized()
     @Mutation(returns => Board)
     async updateBoard(@Arg("id") boardId: number, @Arg("input") input: UpdateBoardInput, @Ctx() ctx: Context) {
-        const [boardToUpdate] = await ctx.prisma.task.findMany({
+        const [boardToUpdate] = await ctx.prisma.board.findMany({
             where: {
                 id: boardId,
                 authorId: ctx.user.id
             }
         });
-
         if (!boardToUpdate) {
-            throw new ForbiddenError("You cannot update that task.");
+            throw new ForbiddenError("You cannot update that board.");
         }
 
         const board = await ctx.prisma.board.update({
