@@ -7,7 +7,7 @@
     "build:development": "npx webpack --mode=development",
     "build:production": "npx webpack --mode=production",
     "start:dev": "npm run build:development -- --watch",
-    "start:production": "npm start build/bundle.js",
+    "start:production": "node build/bundle.js",
     "test": "npx jest --runInBand",
     "ci:dist": "sh ./script/dist.sh",
     "ci:deploy": "npm install && npm run build:production && npx prisma migrate up --experimental && npm run ci:dist && npm run eb:deploy",
