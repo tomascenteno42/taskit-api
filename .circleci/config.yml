@@ -50,8 +50,7 @@ jobs:
     working_directory: ~/repo
     docker:
       - image: nikolaik/python-nodejs
-        environment:
-          DATABASE_URL: $PRODUCTION_DATABASE_URL # This is the URL that will be used by prisma
+
     steps:
       - checkout
 
@@ -77,7 +76,7 @@ jobs:
             echo "aws_secret_access_key=$AWS_SECRET_ACCESS_KEY" >> ~/.aws/config
             echo "export PATH=$PRODUCTION_DATABASE_URL" >> $BASH_ENV
             source $BASH_ENV
-            
+
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "package.json" }}
