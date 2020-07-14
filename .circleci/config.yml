@@ -84,6 +84,10 @@ jobs:
           keys:
             - v1-dependencies-{{ checksum "package.json" }}
             - v1-dependencies-
+
+      # Run migrations on test database
+      - run: npx prisma generate
+
       - run:
           name: Deploy to EB
           command: npm run ci:deploy
