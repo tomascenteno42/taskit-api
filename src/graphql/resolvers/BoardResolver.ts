@@ -104,18 +104,18 @@ export class BoardResolver {
         const subscribedBoards = await ctx.prisma.board.findMany({
             where: {
                 users: {
-                    every: {
-                        id: ctx.user.id
-                    }
-                }   
+					some: {
+						id: ctx.user.id
+					}
+				}  
             },
             include: {
                 author: true,
                 tasks: true,
                 users: true
             }
-        });
-
+		});
+		
         return subscribedBoards;
     }
 }

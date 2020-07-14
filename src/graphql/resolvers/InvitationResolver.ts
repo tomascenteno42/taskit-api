@@ -110,6 +110,11 @@ export class InvitationResolver {
                 users: {
                     connect: { id: invitation.userId }
                 }
+            },
+            include: {
+                author: true,
+                tasks: true,
+                users: true
             }
         });
 
