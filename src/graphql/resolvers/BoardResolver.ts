@@ -41,9 +41,11 @@ export class BoardResolver {
         const [boardToUpdate] = await ctx.prisma.board.findMany({
             where: {
                 id: boardId,
-                authorId: ctx.user.id
+                authorId: ctx.user.id,
+                updatedAt: new Date()
             }
         });
+        
         if (!boardToUpdate) {
             throw new ForbiddenError("You cannot update that board.");
         }
