@@ -4,6 +4,7 @@ const NodeExternals = require("webpack-node-externals");
 
 const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin");
 const NodemonPlugin = require("nodemon-webpack-plugin");
+const TerserPlugin = require('terser-webpack-plugin');
 
 const config = {
     entry: "./src/index.ts",
@@ -32,6 +33,18 @@ const config = {
 const configFactory = (env, args) => {
     if (args.mode === "development" && args.watch) {
         config.plugins.push(new NodemonPlugin());
+    }
+
+    if (args.mode === "production") {
+        config.optimization = {
+            minimize: true,
+            minimizer: [new TerserPlugin({
+                terserOptions: {
+                    keep_classnames: true,
+                    keep_fnames: true,
+                }
+            })],
+        }
     }
 
     return config;

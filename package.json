@@ -45,6 +45,7 @@
     "faker": "^4.1.0",
     "jest": "^26.1.0",
     "nodemon-webpack-plugin": "^4.3.2",
+    "terser-webpack-plugin": "^3.0.6",
     "ts-jest": "^26.1.2",
     "ts-loader": "^7.0.5",
     "tsconfig-paths-webpack-plugin": "^3.2.0",
