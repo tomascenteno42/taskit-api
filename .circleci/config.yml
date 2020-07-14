@@ -50,6 +50,8 @@ jobs:
     working_directory: ~/repo
     docker:
       - image: nikolaik/python-nodejs
+        environment:
+          DATABASE_URL: $PRODUCTION_DATABASE_URL # This is the URL that will be used by prisma
     steps:
       - checkout
 
